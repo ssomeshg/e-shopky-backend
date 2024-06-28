@@ -2,12 +2,13 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose");
 const app = express()
-
+const PORT = process.env.PORT
+require('dotenv').config()
 app.use(cors())
 app.use(express.json())
 
 // DB Connection
-mongoose.connect('mongodb+srv://someshwaran74021:I40KRLtdnP8iprrj@e-shopky-db.iwdtog3.mongodb.net/e-shopky?appName=e-shopky-db').then(() => {
+mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log("db Connected")
 }).catch(() => console.log("DB Connection Failed"))
 
@@ -63,6 +64,6 @@ app.post('/signup', (req, res) => {
 
 
 
-app.listen(5001, () => {
+app.listen(PORT, () => {
     console.log("server Started !!")
 })
