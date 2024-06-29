@@ -25,27 +25,27 @@ app.post('/signup', (req, res) => {
     signUpModel.find({ userName: userName }).then((retData) => {
 
 
-
+        console.log(retData)
         if (retData) {
-            console.log("already added")
+            console.log(retData)
         }
-        else{
+        else {
             const NewUser = new signUpModel(
                 {
                     userName: userName,
                     pswd: pswd,
                     phoneNumber: phoneNumber,
                     userMail: userMail,
-    
+
                 }
-    
+
             )
             NewUser.save().then(() => console.log("added"))
         }
 
 
 
-        
+
 
 
 
